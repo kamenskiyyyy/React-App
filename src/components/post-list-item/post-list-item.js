@@ -1,3 +1,5 @@
+import './post-add-form.css';
+
 export const PostListItem = () => {
     return (
             <li className="app-list-item d-flex justify-content-between">

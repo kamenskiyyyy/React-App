@@ -1,4 +1,5 @@
 import {PostListItem} from '../post-list-item/post-list-item'
+import './post-list.css';
 
 export const PostList = () => {
     return (

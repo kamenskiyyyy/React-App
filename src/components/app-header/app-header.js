@@ -1,3 +1,5 @@
+import './app-header.css';
+
 export const AppHeader = () => {
     return (
         <div className="app-header d-flex">
