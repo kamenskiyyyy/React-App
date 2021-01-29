@@ -1,4 +1,4 @@
-import './post-add-form.css';
+import './post-list-item.css';
 
 export const PostListItem = () => {
     return (
