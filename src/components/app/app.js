@@ -1,3 +1,5 @@
+import {Component} from 'react';
+
 import { AppHeader } from '../app-header/app-header';
 import { SearchPanel } from '../seach-panel/search-panel'
 import { PostStatusFilter } from '../post-status-filter/post-status-filter';
@@ -6,23 +8,42 @@ import { PostAddForm } from '../post-add-form/post-add-form';
 
 import './app.css';
 
-export const App = () => {
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [
+                {label: "Going to learn React", important: true, id: "wefwef"},
+                {label: "That is so good", important: false, id: "fefv"},
+                {label: "I need a break...", important: false, id: "fvfd"}
+            ]
+        };
+        this.deleteItem = this.deleteItem.bind(this);
+    }
 
-    const data = [
-        {label: "Going to learn React", important: true, id: "wefwef"},
-        {label: "That is so good", important: false, id: "fefv"},
-        {label: "I need a break...", important: false, id: "fvfd"}
-    ];
+    deleteItem(id) {
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+            const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
+            return {
+                data: newArr
+            }
+        });
+    }
 
-    return (
-        <div className="app">
-            <AppHeader/>
-            <div className="search-panel d-flex">
-                <SearchPanel/>
-                <PostStatusFilter/>
+    render() {
+        return (
+            <div className="app">
+                <AppHeader/>
+                <div className="search-panel d-flex">
+                    <SearchPanel/>
+                    <PostStatusFilter/>
+                </div>
+                <PostList 
+                    posts={this.state.data}
+                    onDelete={this.deleteItem} />
+                <PostAddForm/>
             </div>
-            <PostList posts={data} />
-            <PostAddForm/>
-        </div>
-    )
+        )
+    }
 }
