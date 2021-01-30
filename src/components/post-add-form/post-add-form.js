@@ -1,8 +1,8 @@
 import './post-add-form.css';
 
-export const PostAddForm = () => {
+export const PostAddForm = ({onAdd}) => {
     return (
-        <form className="bottom-panel d-flex">
+        <div className="bottom-panel d-flex">
             <input
                 type="text"
                 placeholder="0 чем вы думаете сейчас?"
@@ -10,8 +10,9 @@ export const PostAddForm = () => {
             />
             <button
                 type="submit"
-                className="btn btn-outline-secundary">
+                className="btn btn-outline-secundary"
+                onClick={() => onAdd("Hello")}>
                 Добавить</button>
-        </form>
+        </div>
     )
 }
