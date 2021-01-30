@@ -4,7 +4,7 @@ import { AppHeader } from '../app-header/app-header';
 import { SearchPanel } from '../seach-panel/search-panel'
 import { PostStatusFilter } from '../post-status-filter/post-status-filter';
 import { PostList } from '../post-list/post-list';
-import { PostAddForm } from '../post-add-form/post-add-form';
+import PostAddForm from '../post-add-form/post-add-form';
 
 import './app.css';
 
@@ -75,6 +75,7 @@ export default class App extends Component {
  
     render() {
         const {data} = this.state;
+        
         const liked = data.filter(item => item.like).length;
         const allPosts = data.length;
 
